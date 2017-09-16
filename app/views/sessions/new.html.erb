@@ -1,0 +1,26 @@
+<% provide(:title, "Log in") %>
+<div id="login-box">
+    <div class="left">
+        <h1>Log in</h1>
+
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
+
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+
+<div class="right">
+<span class="loginwith">Sign in with<br /><br />social network</span>
+
+<button class="social-signin facebook">Log in with facebook</button>
+<button class="social-signin twitter">Log in with Twitter</button>
+<button class="social-signin google">Log in with Google+</button>
+</div>
+<div class="or">OR</div>
+</div>

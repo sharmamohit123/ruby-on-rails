@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div id="wrapper">
+  <nav role="navigation" id="access">
+    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
+    <ul id="menu">
+      <li class="active"><a class="icon-home" href="#accueil">Home</a></li>
+              <li><a class="icon-group" href="#quisommesnous">About Us</a></li>
+              <li><a class="icon-leaf" href="#services">Services</a></li>
+              <% if logged_in? %>
+              <li><class="icon-picture">
+              <%= link_to "History", '#' %></li>
+              <li><class="icon-envelope-alt">
+               <%= link_to "Logout", logout_path, method: :delete %></li>
+               <% else %>
+               <li><class="icon-envelope-alt">
+               <%= link_to "Login", login_path %></li>
+               <li><class="icon-envelope-alt">
+               <%= link_to "SignUp", signup_path %></li>
+             <% end %>
+          </ul>
+      </nav>
+</div>
+    <%= yield %>
+  </body>
+</html>

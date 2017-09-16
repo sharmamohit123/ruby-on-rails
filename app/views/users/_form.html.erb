@@ -1,0 +1,38 @@
+<style>
+.help-block{
+  color:red;
+  font-size: 13px;
+  margin-top:-20px;
+  display:none;
+}
+</style>
+
+<%= form_with(model: user, local: true) do |form| %>
+  <div style="color:red;font-size:13px;height:50px">
+  <% if @user.errors.full_messages.any? %>
+  <% @user.errors.full_messages.each do |error_message| %>
+    <%= error_message if @user.errors.full_messages.first == error_message %> <br />
+  <% end %>
+  <% end %>
+</div>
+
+  <div class="field">
+    <%= form.text_field :name, placeholder: 'Username' %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :email, placeholder: 'Email' %>
+  </div>
+
+  <div class="field">
+    <%= form.password_field :password, placeholder: 'Password' %>
+  </div>
+  
+  <div class="field">
+    <%= form.password_field :password_confirmation, placeholder: 'Re-type Password' %>  
+  </div>
+
+<div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
