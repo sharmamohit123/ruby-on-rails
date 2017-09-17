@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @genre.name %>
+  <%= @genre.id %>
+  <% id = @genre.id %>
+  <% user = Subgenre.find_by(genreId: id) %>
+   <% @subgenres.each do |sub| %>
+    <% if isGenre?(@genre, sub) %>
+      <%= sub.name %>
+    <% end %>
+    <% end %>
+</p>
+
+    
+
+<%= link_to 'Edit', edit_genre_path(@genre) %> |
+<%= link_to 'Back', genres_path %>

@@ -1,0 +1,13 @@
+<% if logged_in? %>
+    <table>                         
+        <% @genres.each do |genre| %>       
+        <tr>
+            <td><%= genre.id %></td>  
+            <td><%= link_to genre.name, select_subgenre_path(:genreId => genre.id) %></td>  
+        </tr>
+
+        <% end %>
+    </table>     
+<% else %>
+    <h1>Access Denied</h1>
+<% end %>                   

@@ -17,10 +17,10 @@
               <li><a class="icon-group" href="#quisommesnous">About Us</a></li>
               <li><a class="icon-leaf" href="#services">Services</a></li>
               <% if logged_in? %>
-              <li><class="icon-picture">
-              <%= link_to "History", '#' %></li>
-              <li><class="icon-envelope-alt">
-               <%= link_to "Logout", logout_path, method: :delete %></li>
+              <li><a class="icon-picture" href="#">
+              <%= link_to "History", '#' %></a></li>
+              <li><a class="icon-envelope-alt" href="#">
+               <%= link_to "Logout", logout_path, method: :delete %></a></li>
                <% else %>
                <li><class="icon-envelope-alt">
                <%= link_to "Login", login_path %></li>

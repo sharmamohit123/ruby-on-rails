@@ -1,15 +1,24 @@
 <% provide(:title, "Log in") %>
+<style>
+.login_error{
+    color:red;
+    font-size:13px;
+}
+</style>
+<% if !logged_in? %>
 <div id="login-box">
     <div class="left">
         <h1>Log in</h1>
 
     <%= form_for(:session, url: login_path) do |f| %>
-
+    <div class="login_error">
+        <%= flash.now[:danger] %>
+    </div>
       <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
 
       <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "Login", class: "btn btn-primary" %>
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
@@ -24,3 +33,6 @@
 </div>
 <div class="or">OR</div>
 </div>
+<% else %>
+<h1> Access Denied </h1>
+<% end %>

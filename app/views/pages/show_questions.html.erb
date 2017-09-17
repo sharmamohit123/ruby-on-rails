@@ -1,0 +1,15 @@
+<% if logged_in? %>
+<%= form_for(:page, url: result_path) do |f| %>    
+    <%= @questions[@i].text %><br />
+    <%= radio_button_tag :option, @questions[@i].option1 %> <%= @questions[@i].option1 %><br />
+    <%= radio_button_tag :option, @questions[@i].option2 %> <%= @questions[@i].option2 %><br />
+    <%= radio_button_tag :option, @questions[@i].option3 %> <%= @questions[@i].option3 %><br />
+    <%= radio_button_tag :option, @questions[@i].option4 %> <%= @questions[@i].option4 %><br />
+    <%= hidden_field_tag :subgenre_id, @subgenre_id %>
+    <%= hidden_field_tag :question_id, @questions[@i].id %>
+    <%= hidden_field_tag :q_no, @i %>
+    <%= f.submit "submit", class: "btn btn-primary" %>
+<% end %>
+<% else %>
+<h1>Access Denied</h1>
+<% end %>  
