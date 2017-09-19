@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userId: 1
+  genreId: 1
+  subgenreId: 1
+  score: 1
+  status: MyString
+
+two:
+  userId: 1
+  genreId: 1
+  subgenreId: 1
+  score: 1
+  status: MyString

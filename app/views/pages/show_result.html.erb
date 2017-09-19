@@ -1,5 +1,16 @@
-hello
-<%= @i %>
-<%= @right %>
+<% if logged_in? %>
+<% if(@right == 1) %>
+    <% @quiz.score += 10 %>
+    <% @quiz.save %>
+    <%= @quiz.score %>
+    <h2>Correct answer</h2>
+<% else %>
+    <%= @quiz.score %>
+    <h2>Wrong answer</h2>
+<% end %>
 <%= link_to 'continue', quiz_questions_path(:subgenreId => @subgenreId, :i => @i) %>  
+<% else %>
+<h1>Access Denied</h1>
+<h2>Please login first</h2>
+<% end %>
 

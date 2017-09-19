@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     #attr_accessor :password
     # attr_accessor :name, :email, :password, :password_confirmation
+    has_many :quizzes
     
         VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

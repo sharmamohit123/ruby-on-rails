@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917140432) do
+ActiveRecord::Schema.define(version: 20170918212730) do
 
   create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20170917140432) do
     t.string "answer"
   end
 
+  create_table "quizzes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "userId"
+    t.integer "genreId"
+    t.integer "subgenreId"
+    t.integer "score"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "current"
+  end
+
   create_table "subgenres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -45,6 +56,8 @@ ActiveRecord::Schema.define(version: 20170917140432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.integer "current", default: 0, null: false
+    t.integer "current1"
   end
 
 end

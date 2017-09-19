@@ -1,12 +1,23 @@
 <% if logged_in? %>
+    <% if !play_in? %>
+        <% quiz = Quiz.new(userId: @current_user.id, genreId: @genre_id, subgenreId: @subgenre_id, score: 0, status: 'play', current: 0) %>
+        <% quiz.save %>
+        <% quiz_start quiz %>
+        <% current_quiz %>
+    <% end %>
+
+    <%= @i %>
+    <%= session[:quiz_id] %>
+
 <%= form_for(:page, url: result_path) do |f| %>    
     <%= @questions[@i].text %><br />
-    <%= radio_button_tag :option, @questions[@i].option1 %> <%= @questions[@i].option1 %><br />
+    <%= radio_button_tag :option, @questions[@i].option1, :checked => true %> <%= @questions[@i].option1 %><br />
     <%= radio_button_tag :option, @questions[@i].option2 %> <%= @questions[@i].option2 %><br />
     <%= radio_button_tag :option, @questions[@i].option3 %> <%= @questions[@i].option3 %><br />
     <%= radio_button_tag :option, @questions[@i].option4 %> <%= @questions[@i].option4 %><br />
     <%= hidden_field_tag :subgenre_id, @subgenre_id %>
     <%= hidden_field_tag :question_id, @questions[@i].id %>
+    <%= hidden_field_tag :quiz_id, session[:quiz_id] %>
     <%= hidden_field_tag :q_no, @i %>
     <%= f.submit "submit", class: "btn btn-primary" %>
 <% end %>

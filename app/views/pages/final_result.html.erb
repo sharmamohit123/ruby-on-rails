@@ -1,1 +1,9 @@
+<% if play_in? %>
+<% quiz_end %>
 <h1> Quiz ended</h1>
+<h3>Your final score is <%= @quiz.score %> </h3>
+<%= link_to 'Start new Quiz', start_quiz_path %>
+<% else %>
+<h1>Access Denied</h1>
+<%= link_to 'Start new Quiz', start_quiz_path %>
+<% end %>  

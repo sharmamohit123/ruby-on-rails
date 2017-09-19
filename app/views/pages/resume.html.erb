@@ -1,0 +1,7 @@
+<%= @subgenre_id %>
+<%= @i %>
+<%= link_to 'Start new Quiz', start_quiz_path, :new => 1 %><br />
+
+<td><%= link_to 'Resume Quiz', quiz_questions_path(:subgenreId => @subgenre_id, :i => @i), data: { confirm: 'Resume the quiz' } %></td>  
+
+
