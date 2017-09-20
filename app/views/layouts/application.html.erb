@@ -13,13 +13,19 @@
   <nav role="navigation" id="access">
     <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
     <ul id="menu">
-      <li class="active"><a class="icon-home" href="#accueil">Home</a></li>
-              <li><a class="icon-group" href="#quisommesnous">About Us</a></li>
+    <% if (session[:admin] == 1) %>
+    <li class="active">
+    <%= link_to "Home", admin_home_path, class:'icon-home' %></li>
+    <% else %>
+      <li class="active">
+        <%= link_to "Home",home_path, class:'icon-home' %></li>
+        <% end %>
+              <li><%= link_to "Contact Us", contact_path, class:'icon-group' %></li>
               <% if logged_in? %>
               <li>
               <%= link_to "Play Quiz", play_quiz_path, class:'icon-envelope-alt' %></li>
               <li>
-              <%= link_to "History", '#', class:'icon-envelope-alt' %></li>
+              <%= link_to "History", history_path, class:'icon-envelope-alt' %></li>
               <li>
                <%= link_to "Logout", logout_path, method: :delete, class: 'icon-envelope-alt' %></li>
                <% else %>

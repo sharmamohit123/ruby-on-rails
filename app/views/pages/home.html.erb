@@ -1,1 +1,11 @@
-<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+<div class='home' >
+    <h1 class='title'>MyQuiz</h1>
+<% if !logged_in? %>
+    <div class='link_box' ><%= link_to "Sign Up", signup_path, class: "links" %><br /></div>
+    <div class='link_box' ><%= link_to "Log In", login_path, class: "links" %></div>
+    <%= link_to 'Admin Login', admin_login_path, class: "links" %>
+<% else %>
+    <div class='link_box' ><%= link_to 'Start Quiz', start_quiz_path, class: "links" %><br /></div>
+    <div class='link_box' ><%= link_to 'LeaderBoard', leaderboard_path, class: "links" %></div>
+<% end %>
+</div>

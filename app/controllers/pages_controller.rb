@@ -2,11 +2,14 @@ class PagesController < ApplicationController
   def home
   end
 
+  def contact
+  end
+
   def start_quiz
-    new = params[:new].to_i
-    if(new == 1)
+    start_new = params[:start_new].to_i
+    if(start_new == 1)
       quiz_end
-    end
+    end 
 
     if (session[:current1] != -1 && session[:quiz_id]!=0)
       redirect_to :controller => 'pages', :action => 'resume'
@@ -76,5 +79,64 @@ class PagesController < ApplicationController
     @subgenre_id = @quiz.subgenreId
     @i = session[:current1]    
   end
+
+  def history
+  end
+
+  def attempt
+    @quiz = Quiz.where(userId: session[:user_id])
+  end
+
+  def no_attempt
+    @attempt = Hash.new
+    @quiz = Quiz.where(userId: session[:user_id])
+    @subgenre = Subgenre.all
+    @subgenre.each do |subgenre|
+      @attempt[subgenre.name] = 0
+      @quiz.each do |quiz|
+        if (quiz.subgenreId == subgenre.id)
+          @attempt[subgenre.name] = 1
+        end
+      end
+    end
+  end
+
+  def pause
+    @quiz = Quiz.where(userId: session[:user_id], status: 'play')    
+  end
+
+  def leaderboard
+  end
+
+  def genre_board
+    @genres = Genre.all
+  end
   
+  def subgenre_board
+    @subgenres = Subgenre.all
+  end
+
+  def show_board
+    @score = Hash.new
+    genre = params[:genre].to_i
+    if (genre == 1)
+      @quiz = Quiz.where(genreId: params[:genreId])
+    else
+      @quiz = Quiz.where(subgenreId: params[:subgenreId])
+    end
+    @users = User.all
+    @users.each do |user|
+      @quiz_user = @quiz.where(userId: user.id)
+      @score[user.name] = 0
+      @quiz_user.each do |quiz|
+        @score[user.name] += quiz.score
+      end
+    end
+    @score = @score.sort_by {|key, value| value}.reverse      
+  end
+
+  def admin_home
+    
+  end
+
 end

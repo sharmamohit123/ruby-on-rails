@@ -27,7 +27,7 @@
 <div class="right">
 <span class="loginwith">Sign in with<br /><br />social network</span>
 
-<button class="social-signin facebook">Log in with facebook</button>
+<button class="social-signin facebook"><%= link_to "Log in with Facebook", "/auth/facebook", id: "sign_in" %></button>
 <button class="social-signin twitter">Log in with Twitter</button>
 <button class="social-signin google">Log in with Google+</button>
 </div>
@@ -36,3 +36,23 @@
 <% else %>
 <h1> Access Denied </h1>
 <% end %>
+
+<script>
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '{your-app-id}',
+    cookie     : true,
+    xfbml      : true,
+    version    : '{latest-api-version}'
+  });
+  FB.AppEvents.logPageView();   
+};
+
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = "//connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+</script>

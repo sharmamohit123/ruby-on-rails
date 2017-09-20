@@ -1,0 +1,37 @@
+<style>
+.login_error{
+    color:red;
+    font-size:13px;
+}
+</style>
+<% if !logged_in? %>
+<div id="login-box">
+    <div class="left">
+        <h1>Admin Log In</h1>
+
+    <%= form_for(:session, url: admin_login_path) do |f| %>
+    <div class="login_error">
+        <%= flash.now[:danger] %>
+    </div>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
+
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+      <%= hidden_field_tag :admin, 1 %>
+      
+      <%= f.submit "Admin Login", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+
+<div class="right">
+<span class="loginwith">Sign in with<br /><br />social network</span>
+
+<button class="social-signin facebook"><%= link_to "Log in with Facebook", "/auth/facebook", id: "sign_in" %></button>
+<button class="social-signin twitter">Log in with Twitter</button>
+<button class="social-signin google">Log in with Google+</button>
+</div>
+<div class="or">OR</div>
+</div>
+<% else %>
+<h1> Access Denied </h1>
+<% end %>

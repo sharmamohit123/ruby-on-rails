@@ -1,0 +1,4 @@
+<h1 class='title'>Leaderboard</h1>
+<div class='link_box' ><%= link_to 'Genre', genre_board_path(:start_new => 1), class: 'links' %></div>
+
+<div class='link_box' ><%= link_to 'Subgenre', subgenre_board_path(:subgenreId => @subgenre_id, :i => @i), class: 'links' %></div>

@@ -8,7 +8,7 @@
 </style>
 
 <%= form_with(model: user, local: true) do |form| %>
-  <div style="color:red;font-size:13px;height:50px">
+  <div style="color:red;font-size:13px;height:30px">
   <% if @user.errors.full_messages.any? %>
   <% @user.errors.full_messages.each do |error_message| %>
     <%= error_message if @user.errors.full_messages.first == error_message %> <br />
@@ -36,3 +36,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+<p style='text-align:center' >Already have <br />an account? <%= link_to "Login now!", login_path %></p>
+

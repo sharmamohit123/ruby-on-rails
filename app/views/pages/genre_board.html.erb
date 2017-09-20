@@ -1,0 +1,9 @@
+<% if logged_in? %>
+<h1 class='title'>Leaderboard</h1>
+    <% @genres.each do |genre| %>       
+        <div class='link_box' ><%= link_to genre.name, show_board_path(:genreId => genre.id, :genre => 1), class:'links' %></div>  
+
+    <% end %>
+<% else %>
+<h1 class ='title' >Access Denied</h1>
+<% end %>  

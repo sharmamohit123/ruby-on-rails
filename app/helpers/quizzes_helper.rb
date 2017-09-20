@@ -15,6 +15,9 @@ module QuizzesHelper
 
     def quiz_end
         session[:current1] = -1
+        @quiz = Quiz.find_by(id: session[:quiz_id])
+        @quiz.status = 'finish'
+        @quiz.save
         session.delete(:quiz_id)
         @current_quiz = nil
     end

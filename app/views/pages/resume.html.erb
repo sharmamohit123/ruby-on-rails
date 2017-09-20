@@ -1,7 +1,6 @@
-<%= @subgenre_id %>
-<%= @i %>
-<%= link_to 'Start new Quiz', start_quiz_path, :new => 1 %><br />
+<h1 class='title'>You have an unfinished quiz left</h1>
+<div class='link_box'><%= link_to 'Start new Quiz', start_quiz_path(:start_new => 1), data: { confirm: 'Start a new quiz' }, class: 'links' %></div>
 
-<td><%= link_to 'Resume Quiz', quiz_questions_path(:subgenreId => @subgenre_id, :i => @i), data: { confirm: 'Resume the quiz' } %></td>  
+<div class='link_box'><%= link_to 'Resume Quiz', quiz_questions_path(:subgenreId => @subgenre_id, :i => @i), data: { confirm: 'Resume the quiz' }, class: 'links' %></div>  
 
 

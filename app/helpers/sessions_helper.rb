@@ -8,6 +8,11 @@ module SessionsHelper
         end
         session[:quiz_id] = user.current
     end
+
+    def admin_log_in(user)
+        session[:user_id] = user.id
+        session[:admin] = 1
+    end
     
       # Returns the current logged-in user (if any).
     def current_user
@@ -34,6 +39,14 @@ module SessionsHelper
         session.delete(:current1)
         @current_user = nil
         session.delete(:quiz_id)
+        session.delete(:admin)
         @current_quiz = nil
     end
+
+    def admin_log_out
+        session.delete(:user_id)
+        session.delete(:admin)
+        @current_user = nil        
+    end
+
 end

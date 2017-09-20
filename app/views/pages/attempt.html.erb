@@ -1,0 +1,48 @@
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+background-color: #ff3333;
+color: white;
+}
+tr:nth-child(odd){
+    color:white;
+}
+
+th {
+    background-color: #689384;
+    color: white;
+}
+</style>
+<% if logged_in? %>
+<h1 class='title'>Attempted Quizzes</h1>
+<table>   
+<tr>
+<th>Quiz</th>
+<th>Genre</th>
+<th>Starting time</th>
+<th>Score</th>
+</tr>                        
+    <% @quiz.each do |quiz| %>
+        <% genre = Genre.find_by(id: quiz.genreId) %>       
+        <% subgenre = Subgenre.find_by(id: quiz.subgenreId) %>       
+        <tr>
+            <td><%= subgenre.name %></td>  
+            <td><%= genre.name %></td>  
+            <td><%= quiz.created_at.strftime("%A %d-%b %H:%M:%S") %></td>  
+            <td><%= quiz.score %></td>  
+        </tr>
+
+    <% end %>
+</table>
+<% else %>
+<h1 class='title'>Access Denied</h1>
+<% end %>  

@@ -1,9 +1,8 @@
 body {
   background-color: #fff;
-  color: white;
+  color: blue;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
 }
 
 p, ol, ul, td {
@@ -22,13 +21,9 @@ a {
   color: #000;
 
   &:visited {
-    color: white;
+    color: #222;
   }
 
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
 }
 
 th {
@@ -61,4 +56,8 @@ label {
 .help_block{
   color:red;
   font-size: 13px;
+}
+
+.main{
+  color:white;
 }

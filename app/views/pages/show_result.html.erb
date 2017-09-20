@@ -2,15 +2,15 @@
 <% if(@right == 1) %>
     <% @quiz.score += 10 %>
     <% @quiz.save %>
-    <%= @quiz.score %>
-    <h2>Correct answer</h2>
+    <h1 class='title' >Correct answer</h1>
+    <h1 style='text-align:center;color:#689384' >Your score <%= @quiz.score %> </h1>
 <% else %>
-    <%= @quiz.score %>
-    <h2>Wrong answer</h2>
+    <h1 class='title' >Wrong answer</h1>
+    <h1 style='text-align:center;color:#689384' >Your score <%= @quiz.score %> </h1>
 <% end %>
-<%= link_to 'continue', quiz_questions_path(:subgenreId => @subgenreId, :i => @i) %>  
+<div class='link_box' ><%= link_to 'continue', quiz_questions_path(:subgenreId => @subgenreId, :i => @i), class: 'links' %>  
 <% else %>
-<h1>Access Denied</h1>
+<h1 class ='title' >Access Denied</h1>
 <h2>Please login first</h2>
 <% end %>
 

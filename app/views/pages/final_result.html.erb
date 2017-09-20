@@ -1,9 +1,9 @@
 <% if play_in? %>
 <% quiz_end %>
-<h1> Quiz ended</h1>
-<h3>Your final score is <%= @quiz.score %> </h3>
-<%= link_to 'Start new Quiz', start_quiz_path %>
+<h1 class='title' > Quiz ended</h1>
+<h1 style='text-align:center;color:#689384'>Your final score is <%= @quiz.score %> </h1>
+<div class='link_box' ><%= link_to 'Start new Quiz', start_quiz_path, class:'links' %></div>
 <% else %>
-<h1>Access Denied</h1>
-<%= link_to 'Start new Quiz', start_quiz_path %>
+<h1 class='title' >Access Denied</h1>
+<div class='link_box' ><%= link_to 'Start new Quiz', start_quiz_path, class:'links' %></div>
 <% end %>  
